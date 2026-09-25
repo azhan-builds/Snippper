@@ -21,6 +21,9 @@ def main():
     add_parser.add_argument("name", help="short nickname for the command")
     add_parser.add_argument("command", help="the actual command to be remembered")
 
+    get_parser = subparsers.add_parser("get", help="look up a saved command by nickname")
+    get_parser.add_argument("name", help='the nickname to look up')
+
     args = parser.parse_args()
 
     if args.action == "add":
@@ -28,6 +31,12 @@ def main():
         snippets[args.name] = args.command
         save_snippets(snippets)
         print(f"Got it, saving '{args.command}' under the name '{args.name}'")
+    elif args.action == 'get':
+        snippets = load_snippets()
+        if args.name in snippets:
+            print(snippets[args.name])
+        else:
+            print(f"No snippet found called '{args.name}'")
     else:
         print("snip is alive! Try: snip.py add <name> <command>")
 
