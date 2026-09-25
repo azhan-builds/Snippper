@@ -1,6 +1,7 @@
 import argparse
 import json
 import os
+import pyperclip
 
 SNIPPETS_FILE = "snippets.json"
 
@@ -13,6 +14,7 @@ def load_snippets():
 def save_snippets(snippets):
     with open(SNIPPETS_FILE, "w") as f:
         json.dump(snippets, f, indent=4)
+
 def main():
     parser = argparse.ArgumentParser(description="Snip- save and recall terminal commands")
     subparsers = parser.add_subparsers(dest="action")
@@ -34,7 +36,9 @@ def main():
     elif args.action == 'get':
         snippets = load_snippets()
         if args.name in snippets:
-            print(snippets[args.name])
+            command = snippets[args.name]
+            pyperclip.copy(command)
+            print(f"Copied to clipboard: {command}")
         else:
             print(f"No snippet found called '{args.name}'")
     else:
