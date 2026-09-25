@@ -2,6 +2,8 @@
 
 A small tool that lets you save long commands under short nicknames so you copy them to your clipboard whenever you want.
 
+![Snip in action](https://user-cdn.hackclub-assets.com/01a0d9c0-1003-7590-bdee-c5bf62486967/Screenshot%202026-09-25%20233502.png)
+
 
 ## Why
 
