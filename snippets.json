@@ -1,0 +1,4 @@
+{
+    "gitpush": "git push origin main",
+    "dockerclean": "docker system prune -a"
+}
