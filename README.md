@@ -16,23 +16,22 @@ I can't remember long commands that I use almost daily, maybe its just because i
 * `snip delete <name>` - for deletng a saved snippet/command
 
 ## Installing
-\```bash
+```bash
 pip install snip-cli
-\```
+```
 
 ## Usage
-\```bash
+```bash
 snip add gitpush "git push origin main"
 snip get gitpush
 # git push origin main is now on your clipboard
 
 snip list
 snip delete gitpush
-\```
+```
 
 ## Built with
--Python
--`argparse` for the command line interface
--`json` for storing commands locally
--`pyperclip` for system's clipboars support
-
+- Python
+- `argparse` for the command line interface
+- `json` for storing commands locally
+- `pyperclip` for system's clipboard support
