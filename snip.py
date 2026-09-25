@@ -26,6 +26,11 @@ def main():
     get_parser = subparsers.add_parser("get", help="look up a saved command by nickname")
     get_parser.add_argument("name", help='the nickname to look up')
 
+    subparsers.add_parser("list", help="show every saved snippet")
+
+    delete_parser = subparsers.add_parser("delete", help="remove a saved snippet")
+    delete_parser.add_argument("name", help="the nickname to delete")
+
     args = parser.parse_args()
 
     if args.action == "add":
@@ -41,6 +46,24 @@ def main():
             print(f"Copied to clipboard: {command}")
         else:
             print(f"No snippet found called '{args.name}'")
+
+    elif args.action == "list":
+        snippets = load_snippets()
+        if not snippets:
+            print("No snippets saved yet")
+        else:
+            for name, command in snippets.items():
+                print(f"{name}, {command}")
+
+    elif args.action == "delete":
+        snippets = load_snippets()
+        if args.name in snippets:
+            del snippets[args.name]
+            save_snippets(snippets)
+            print(f"Deleted '{args.name}'")
+        else:
+            print(f"No snippets found called '{args.name}'")
+            
     else:
         print("snip is alive! Try: snip.py add <name> <command>")
 
