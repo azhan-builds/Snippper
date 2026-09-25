@@ -1,0 +1,14 @@
+[project]
+name = "snip-cli"
+version = "1.0" 
+description = "A tiny terminal snippet manager"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = ["pyperclip"]
+
+[project.scripts]
+snip = "snip:main"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
